@@ -13,4 +13,4 @@ server_compiled/*
 .history/
 data
 conf
-packages
+packages/*/**/dist
