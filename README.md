@@ -369,3 +369,10 @@ export default class Index extends zzPageBase{
 公众号: 前端张大胖 
 
 ![](https://github.com/Bigerfe/koa-react-ssr/blob/v1/docs/imgs/wxgzh.jpg?raw=true)
+
+
+
+### dist 添加到.gitigonre
+git rm -r --cached .
+
+https://blog.csdn.net/LOG_IN_ME/article/details/82462008

@@ -18,7 +18,7 @@ import matchRoute from '../../share/match-route';
 
 import App from '../../client/router/index';
 
-export default  async (ctx,next)=>{
+export default  async (ctx,next) => {
 
     const path = ctx.request.path;
 
@@ -55,11 +55,12 @@ export default  async (ctx,next)=>{
     //渲染的路由和数据
     const props = {
         routeList
-    }
+    };
 
     const html = renderToString(<StaticRouter><Layout>
-        <targetRoute.component initialData={fetchResult} ></targetRoute.component></Layout>
-        </StaticRouter>);
+        <targetRoute.component initialData={fetchResult} ></targetRoute.component>
+                                              </Layout>
+    </StaticRouter>);
 
     ctx.body=`<!DOCTYPE html>
 <html lang="en">
@@ -83,4 +84,4 @@ export default  async (ctx,next)=>{
 `;
 
     await next();
-}
+};
