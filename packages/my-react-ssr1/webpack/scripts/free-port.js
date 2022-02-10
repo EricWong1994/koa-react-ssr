@@ -1,8 +1,14 @@
 //mac linux 释放指定端口
 
 module.exports = function (port) {
+    // console.log('process.platform: ', process.platform); // darwin
     if (process.platform && process.platform !== 'win32') {
         //mac linux等
+        // console.log('process.argv: ', process.argv);
+        // process.argv:  [
+        //     '/usr/local/bin/node',
+        //     '/Users/v_wangshihao01/Desktop/github/koa-react-ssr/packages/my-react-ssr1/webpack/scripts/svr-dev-server.js'
+        //   ]
         const args = process.argv.slice(2);
 
         let portArg = args && args[0];

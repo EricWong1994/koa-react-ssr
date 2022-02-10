@@ -6,23 +6,26 @@ import Layout from '../app/layout';
 import { Route, Switch, BrowserRouter,Redirect } from 'react-router-dom';
 
 function Page404() {
-    return <div>404拉 </div>
+    return <div>404拉 </div>;
 }
 
+// eslint-disable-next-line react/no-multi-comp
 function App({routeList}) {
+    console.log('routeList: ', routeList);
     return (
-            <Layout> 
-               <Switch>
+        <Layout>
+            <Switch>
                 {
-                    routeList.map(item=>{
-                        return item.initialData ? <Route key={item.path} exact={item.exact} path={item.path}  render={(props)=>{
-                            return <item.component {...props} initialData={item.initialData}></item.component>
-                        }}></Route> : <Route key={item.path} {...item}></Route>
+                    routeList.map(item => {
+                        return item.initialData ? <Route key={item.path} exact={item.exact} path={item.path}  render={(props) => {
+                            return <item.component {...props} initialData={item.initialData}></item.component>;
+                        }}>
+                                                  </Route> : <Route key={item.path} {...item}></Route>;
                     })
                 }
                 <Route to="*" component={Page404}></Route>
             </Switch>
-            </Layout>
+        </Layout>
     );
 }
 

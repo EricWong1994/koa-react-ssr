@@ -11,5 +11,6 @@ import routeList from '../router/route-config';
 
 //渲染路由
 ReactDom.hydrate(<BrowserRouter>
-    <App routeList={routeList} /></BrowserRouter>
-, document.getElementById('root'))
+    <App routeList={routeList} />
+                 </BrowserRouter>
+, document.getElementById('root'));

@@ -18,7 +18,7 @@ import matchRoute from '../../share/match-route';
 
 import App from '../../client/router/index';
 
-export default  async (ctx,next)=>{
+export default  async (ctx,next) => {
 
     const path = ctx.request.path;
 
@@ -45,7 +45,9 @@ export default  async (ctx,next)=>{
         initialData: fetchResult
     };
 
-    const html = renderToString(<StaticRouter location={path} context={context}>
+    const html = renderToString(<StaticRouter
+        location={path}
+        context={context}>
         <App routeList={routeList}></App>
     </StaticRouter>);
 
@@ -66,4 +68,4 @@ export default  async (ctx,next)=>{
 </html><script type="text/javascript"  src="/index.js"></script>`;
 
     await next();
-}
+};

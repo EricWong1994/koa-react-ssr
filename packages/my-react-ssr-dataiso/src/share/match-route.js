@@ -4,16 +4,18 @@
 
 import { matchPath} from 'react-router';
 
-export default (path,routeList)=>{ 
-    
-        let targetRoute,targetMatch;
+export default (path,routeList) => {
 
-        for (var item of routeList) {
-            targetMatch = matchPath(path, item);
-            if (targetMatch) {
-                targetRoute = item;//查找到第一个路由后停止查找
-                break;
-            }
+    let targetRoute,targetMatch;
+
+    for (let item of routeList) {
+        targetMatch = matchPath(path, item);
+        // targetMatch:  null
+        // targetMatch:  { path: '/index', url: '/index', isExact: true, params: {} }
+        if (targetMatch) {
+            targetRoute = item;//查找到第一个路由后停止查找
+            break;
         }
+    }
     return { targetRoute, targetMatch};
-}
+};
