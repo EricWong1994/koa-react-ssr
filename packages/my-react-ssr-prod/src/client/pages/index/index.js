@@ -20,7 +20,7 @@ export default class Index extends React.Component {
         this.state = {
             page: initialData.page,
             fetchData: initialData.fetchData
-        }  
+        };
     }
 
     static async  getInitialProps() {
@@ -49,7 +49,7 @@ export default class Index extends React.Component {
                 });
 
                 document.title = res.page.tdk.title;
-            })
+            });
         }
 
         if (this.state.page && this.state.page.tdk) {
@@ -62,7 +62,9 @@ export default class Index extends React.Component {
     render() {
         return <div className="page-index-box">
             <p>首页</p>
-        <img src={img}/>
-        </div>
+            <p>首页22222</p>
+            test
+            <img src={img}/>
+        </div>;
     }
 }

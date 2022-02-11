@@ -82,9 +82,7 @@ export default async (ctx, next) => {
      ${assetsMap.css.join('')}
 </head>
 <body>
-    <div id="root">
-       ${html}
-    </div>
+    <div id="root">${html}</div>
     <textarea id="ssrTextInitData" style="display:none;">
     ${JSON.stringify(fetchResult)}
     </textarea>
@@ -94,4 +92,4 @@ export default async (ctx, next) => {
 `;
 
     await next();
-}
+};

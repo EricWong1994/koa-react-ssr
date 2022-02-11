@@ -15,7 +15,7 @@ import routeList from '../../client/router/route-config';
 import Provider from '../../client/app/provider';
 
 //css 同构的上下文
-import StyleContext from 'isomorphic-style-loader/StyleContext'
+import StyleContext from 'isomorphic-style-loader/StyleContext';
 
 import App from '../../client/router/index';
 
@@ -25,19 +25,19 @@ const getAssets = require('../common/assets');
 
 
 //根据请求 path 查找组件
-const findRouteByPath=(opt)=>{
+const findRouteByPath=(opt) => {
     let {path} = opt;
     let Component;
-    for(var item of routeList){
-       if(matchPath(path,item)){
-        Component = item.component;
-        break;
-       }
+    for(let item of routeList){
+        if(matchPath(path,item)){
+            Component = item.component;
+            break;
+        }
     }
     return Component;
-}
+};
 
-export default  async (ctx,next)=>{
+export default  async (ctx,next) => {
 
     const path = ctx.request.path;
 
@@ -57,8 +57,8 @@ export default  async (ctx,next)=>{
 
     if (!Component){
         Component = function Not() {
-            return <div>404 page</div>
-        }
+            return <div>404 page</div>;
+        };
     }
 
     //得到数据
@@ -81,13 +81,13 @@ export default  async (ctx,next)=>{
     if(page && page.tdk){
         tdk=page.tdk;
     }
-   
-    const css = new Set() // CSS for all rendered React components
+
+    const css = new Set(); // CSS for all rendered React components
     const insertCss = (...styles) => styles.forEach(style => css.add(style._getCss()));
 
     const html = renderToString(<Provider initialData={fetchResult||{}}>
         <StyleContext.Provider value={{ insertCss }} ><StaticRouter location={path} context={context}><App></App></StaticRouter></StyleContext.Provider>
-    </Provider>);
+                                </Provider>);
 
     const helmet = Helmet.renderStatic();
 
@@ -100,9 +100,7 @@ export default  async (ctx,next)=>{
    <style> ${[...css].join('')}</style>
 </head>
 <body>
-    <div id="root">
-       ${html}
-    </div>
+    <div id="root">${html}</div>
     <textarea id="ssrTextInitData" style="display:none;">
     ${JSON.stringify(fetchResult)}
     </textarea>
@@ -113,4 +111,4 @@ export default  async (ctx,next)=>{
 `;
 
     await next();
-}
+};
