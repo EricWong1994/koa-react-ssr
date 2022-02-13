@@ -29,7 +29,7 @@ const getAssets = require('../common/assets');
 const checkIsAsyncRoute = (component) => {
     console.log('component.name', component[proConfig.asyncComponentKey]);
     return component[proConfig.asyncComponentKey];
-}
+};
 
 //将路由转换为静态路由
 async function getStaticRoutes(routes) {
@@ -57,7 +57,7 @@ async function getStaticRoutes(routes) {
 }
 
 
-export default  async (ctx,next)=>{
+export default  async (ctx,next) => {
 
     const path = ctx.request.path;
 
@@ -78,8 +78,8 @@ export default  async (ctx,next)=>{
 
     if (!Component){
         Component = function Not() {
-            return <div>404 page</div>
-        }
+            return <div>404 page</div>;
+        };
     }
 
 
@@ -103,13 +103,13 @@ export default  async (ctx,next)=>{
     if(page && page.tdk){
         tdk=page.tdk;
     }
-   
+
     // - <StaticRouter location={path} context={context}><App></App></StaticRouter>
     const html = renderToString(<Provider initialData={fetchResult||{}}>
         <StaticRouter location={path} context={context}>
             <App routeList={staticRoutesList}></App>
         </StaticRouter>
-    </Provider>);
+                                </Provider>);
 
 
     const helmet = Helmet.renderStatic();
@@ -135,4 +135,4 @@ export default  async (ctx,next)=>{
 `;
 
     await next();
-}
+};

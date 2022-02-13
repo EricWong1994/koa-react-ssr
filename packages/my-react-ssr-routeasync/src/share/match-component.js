@@ -4,16 +4,16 @@
 
 import { matchPath} from 'react-router';
 
-export default (opt,routeList)=>{ 
+export default (opt,routeList) => {
 
-        let { path } = opt;
-        let Component;
+    let { path } = opt;
+    let Component;
 
-        for (var item of routeList) {
-            if (matchPath(path, item)) {
-                Component = item.component;//查找到组件就不会继续查找，这里针对的是页面组件
-                break;
-            }
+    for (let item of routeList) {
+        if (matchPath(path, item)) {
+            Component = item.component;//查找到组件就不会继续查找，这里针对的是页面组件
+            break;
         }
-        return Component;
-}
+    }
+    return Component;
+};
